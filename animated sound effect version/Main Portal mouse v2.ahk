@@ -1,4 +1,4 @@
-﻿#NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
+#NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
 ; #Warn  ; Enable warnings to assist with detecting common errors.
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
@@ -10,6 +10,7 @@ SetWinDelay, -100
 Coordmode, Mouse, Screen
 Process, Priority,, R
 SetBatchLines, -1
+SetTitleMatchMode, 3
 Listlines, off
 IniRead, TPSOUND, Settings.ini, SOUNDEFFECT, Sound
 Menu, Tray, NoStandard
@@ -138,6 +139,7 @@ Return
 
 
 right_through_left:
+WinSet, AlwaysOnTop, on, PORTAL
 MouseGetPos, Xpor, Ypor
 Portal_right := GUI_W
 Portal_right -= 12
@@ -216,12 +218,14 @@ Mouse_Speed_Current := Mouse_Speed_Orig - 15
 DllCall("SystemParametersInfo", UInt, 0x71, UInt, 0, UInt, Mouse_Speed_Current, UInt, 0)
 sleep, 5
 DllCall("SystemParametersInfo", UInt, 0x71, UInt, 0, UInt, Mouse_Speed_Orig, UInt, 0)
+WinSet, AlwaysOnTop, off, PORTAL
 return
 
 
 
 
 left_through_right:
+WinSet, AlwaysOnTop, on, PORTAL
 MouseGetPos, Xpor, Ypor
 Portal_right := GUI_W
 Portal_right -= 12
@@ -300,6 +304,7 @@ Mouse_Speed_Current := Mouse_Speed_Orig - 15
 DllCall("SystemParametersInfo", UInt, 0x71, UInt, 0, UInt, Mouse_Speed_Current, UInt, 0)
 sleep, 5
 DllCall("SystemParametersInfo", UInt, 0x71, UInt, 0, UInt, Mouse_Speed_Orig, UInt, 0)
+WinSet, AlwaysOnTop, off, PORTAL
 return
 
 
@@ -308,6 +313,7 @@ return
 
 
 top_through_bottom:
+WinSet, AlwaysOnTop, on, PORTAL
 MouseGetPos, Xpor, Ypor
 Portal_bottom := GUI_H
 Portal_bottom -= 12
@@ -386,6 +392,7 @@ Mouse_Speed_Current := Mouse_Speed_Orig - 15
 DllCall("SystemParametersInfo", UInt, 0x71, UInt, 0, UInt, Mouse_Speed_Current, UInt, 0)
 sleep, 5
 DllCall("SystemParametersInfo", UInt, 0x71, UInt, 0, UInt, Mouse_Speed_Orig, UInt, 0)
+WinSet, AlwaysOnTop, off, PORTAL
 return
 
 
@@ -393,6 +400,7 @@ return
 
 
 bottom_through_top:
+WinSet, AlwaysOnTop, on, PORTAL
 MouseGetPos, Xpor, Ypor
 Portal_bottom := GUI_H
 Portal_bottom -= 12
@@ -471,6 +479,7 @@ Mouse_Speed_Current := Mouse_Speed_Orig - 15
 DllCall("SystemParametersInfo", UInt, 0x71, UInt, 0, UInt, Mouse_Speed_Current, UInt, 0)
 sleep, 5
 DllCall("SystemParametersInfo", UInt, 0x71, UInt, 0, UInt, Mouse_Speed_Orig, UInt, 0)
+WinSet, AlwaysOnTop, off, PORTAL
 return
 
 
